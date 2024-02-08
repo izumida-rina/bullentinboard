@@ -2,7 +2,7 @@
 FROM openjdk:17 AS build
 COPY ./ /home/app
 WORKDIR /home/app
-RUN ./gradlew build
+RUN chmod +x ./gradlew && ./gradlew build
 
 # final stage
 FROM openjdk:17-alpine
