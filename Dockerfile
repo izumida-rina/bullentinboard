@@ -3,7 +3,7 @@ FROM openjdk:17 AS build
 COPY ./ /home/app
 WORKDIR /home/app
 RUN chmod +x ./gradlew
-RUN ./gradlew build
+RUN ./gradlew --no-daemon build
 
 # final stage
 FROM openjdk:17-alpine
