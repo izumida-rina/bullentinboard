@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板詳細</title>
+    <style>
+        .col_index {
+            width: 100px;
+        }
+
+        .col_data {
+            width: 500px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>掲示板詳細</h3>
+    <table border="1" th:object="${formModel}">
+        <tr>
+            <th class="col_index">作成日</th>
+            <td class="col_data">
+                <div type="text" th:text="*{createDate}">dammy</div>
+            </td>
+        </tr>
+        <tr>
+            <th>タイトル</th>
+            <td>
+                <div type="text" th:text="*{title}">dammy</div>
+            </td>
+        </tr>
+        <tr>
+            <th>内容</th>
+            <td>
+                <div type="text" th:text="*{contents}">dammy</div>
+            </td>
+        </tr>
+        <tr>
+            <th>作成者</th>
+            <td>
+                <div type="text" th:text="*{createUser}">dammy</div>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <form action="/">
+        <input type="submit" value="戻る">
+    </form>
+</body>
+
+</html>
