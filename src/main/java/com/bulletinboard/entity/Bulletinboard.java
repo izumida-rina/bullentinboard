@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -18,13 +20,22 @@ public class Bulletinboard {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column
     private Date createDate;
-    @Column
+
+    @Column(nullable = false)
+    @NotEmpty
     private String title;
-    @Column
+
+    @Column(nullable = false)
+    @NotEmpty
     private String contents;
-    @Column
+
+    @Column(nullable = false)
+    @NotEmpty
     private String createUser;
 
+    @Column(nullable = false)
+    private int division;
 }
