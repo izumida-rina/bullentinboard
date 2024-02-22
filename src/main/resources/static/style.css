@@ -1,0 +1,80 @@
+@import url(sanitize.css);
+
+/* 共通 */
+.container {
+    width: 70%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* 登録、編集画面 */
+.alert {
+    margin-bottom: 40px;
+}
+
+.new_table {
+    margin: 0 auto;
+    width: 80%;
+    background-color: rgb(210, 233, 240);
+    border-radius: 14px;
+
+}
+
+.new_table th {
+    padding: 20px 20px 20px;
+    font-size: 18px;
+}
+
+.new_table td {
+    padding: 5px 20px 10px;
+}
+
+.new_table input {
+    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
+    border: 2px solid #e6e6e6 !important;
+    outline: 0;
+    background-color: #faffff;
+}
+
+.new_table textarea {
+    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
+    border: 2px solid #e6e6e6 !important;
+    outline: 0;
+    background-color: #faffff;
+
+}
+
+.new_table select {
+    width: 150px;
+    box-shadow: 0 0 5px 0 rgba(255, 153, 0, 1);
+    border: 2px solid #e6e6e6 !important;
+    outline: 0;
+    background-color: #faffff;
+
+}
+
+/* ログイン画面 */
+.login_form input{
+    margin-bottom: 10px;
+}
+
+/* 詳細画面 */
+.detail_table {
+    margin: 30px auto;
+    width: 80%;
+    background-color: rgb(210, 233, 240);
+    border-radius: 14px;
+}
+
+.detail_table th {
+    padding: 20px 20px 20px;
+    font-size: 18px;
+}
+
+.detail_table td div {
+    font-size: 18px;
+}
