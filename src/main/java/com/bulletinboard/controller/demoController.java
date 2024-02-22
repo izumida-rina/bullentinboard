@@ -1,17 +1,22 @@
 package com.bulletinboard.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 
-import com.bulletinboard.Service.CrudService;
 import com.bulletinboard.entity.Bulletinboard;
 import com.bulletinboard.entity.Division;
 import com.bulletinboard.repository.BulletinboardRepository;
 import com.bulletinboard.repository.DivisionRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,8 +28,8 @@ public class demoController {
     @Autowired
     DivisionRepository d_repos;
 
-    @Autowired
-    CrudService crudService;
+    // @Autowired
+    // CrudService crudService;
 
     /* 一覧画面への遷移 */
     @GetMapping("/list")
@@ -86,6 +91,35 @@ public class demoController {
         mav.addObject("div", div);
         mav.setViewName("show");
         return mav;
+    }
+
+     /* 更新処理 */
+    @PostMapping("/create")
+    @Transactional(readOnly = false)
+    public ModelAndView save(@ModelAttribute("formModel") @Validated Bulletinboard bulletinboard,
+            BindingResult result) {
+        System.out.println("formModel: " + bulletinboard);
+
+        // エラーチェック
+        if (result.hasErrors()) {
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("new");
+            List<Division> list = d_repos.findAll();
+            mav.addObject("lists", list);
+            return mav;
+        }
+
+        bulletinboard.setCreateDate(new Date());
+        b_repos.saveAndFlush(bulletinboard);
+        return new ModelAndView("redirect:/list");
+    }
+
+    /* 削除処理 */
+    @PostMapping("/delete")
+    @Transactional(readOnly = false)
+    public ModelAndView delete(@RequestParam int id) {
+        b_repos.deleteById(id);
+        return new ModelAndView("redirect:/list");
     }
 
 }
